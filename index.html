@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Casamento - Murilo & Vitória</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(135deg, #c5a059 0%, #f1e4c3 50%, #c5a059 100%);
+            --deep-olive: #3a4118;
+            --soft-cream: #fdfbf7;
+        }
+
+        body {
+            background-color: #121212;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .mobile-canvas {
+            width: 100%;
+            max-width: 414px;
+            height: 90vh;
+            background: var(--soft-cream);
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 6px solid #222;
+        }
+
+        .page-wrapper {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .page {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Textura de fundo */
+        .bg-texture {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 45%;
+            background: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800') bottom right no-repeat;
+            background-size: contain;
+            opacity: 0.3;
+            filter: sepia(30%);
+            z-index: 0;
+        }
+
+        .save-the-date-container {
+            padding: 15px 10px;
+            margin-top: 20px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 5px;
+            color: #333;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .names-display {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: var(--deep-olive);
+            line-height: 0.9;
+            margin: 30px 0;
+            z-index: 10;
+        }
+
+        .date-display {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #8b6b23;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        .btn-main {
+            background: var(--deep-olive);
+            color: #f1e4c3;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(58, 65, 24, 0.2);
+            z-index: 10;
+        }
+
+        .location-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            z-index: 10;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: 0.4s;
+        }
+
+        .dot.active {
+            width: 20px;
+            border-radius: 4px;
+            background: var(--gold-gradient);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-canvas">
+        <div class="bg-texture"></div>
+        
+        <div class="page-wrapper" id="wrapper">
+            
+            <!-- PÁGINA 1 -->
+            <section class="page flex flex-col items-center text-center">
+                <div class="save-the-date-container w-full">
+                    <h1>SAVE THE DATE</h1>
+                </div>
+                
+                <p class="mt-8 text-amber-700 font-medium tracking-widest text-xs uppercase">Convidam para a sua união</p>
+                
+                <div class="names-display">
+                    Murilo<br>& Vitória
+                </div>
+
+                <div class="date-display">
+                    23 . MAIO . 2026
+                </div>
+
+                <p class="text-sm text-gray-600 italic px-6 mb-8 z-10">
+                    "Guarde esta data para celebrarmos juntos o início da nossa nova jornada."
+                </p>
+
+                <button class="btn-main" onclick="move(1)">Ver Localização</button>
+                
+                <div class="hero-image-overlay"></div>
+            </section>
+
+            <!-- PÁGINA 2 -->
+            <section class="page flex flex-col items-center text-center bg-white/40">
+                <div class="mt-4">
+                    <h2 class="font-serif text-xl tracking-widest text-gray-800 uppercase">O Local</h2>
+                    <div class="w-10 h-0.5 bg-amber-600 mx-auto mt-2"></div>
+                </div>
+
+                <div class="flex-grow flex flex-col justify-center w-full px-2">
+                    <div class="location-card">
+                        <span class="font-serif text-2xl text-gray-900 block mb-1">Coco Bambu</span>
+                        <p class="text-[10px] font-bold text-amber-700 tracking-[0.2em] mb-6 uppercase">Super Shopping Osasco | 2º Andar</p>
+                        
+                        <div class="text-sm text-gray-600 space-y-2 mb-8">
+                            <p class="font-semibold text-gray-800">Av. dos Autonomistas, 1828</p>
+                            <p>Industrial Autonomistas, Osasco - SP</p>
+                            <p>CEP: 06020-010</p>
+                        </div>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Coco+Bambu+Super+Shopping+Osasco" target="_blank" 
+                           class="block border border-[#3a4118] text-[#3a4118] py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-[#3a4118] hover:text-white transition-all">
+                            Abrir no Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mb-12 w-full">
+                    <button class="btn-main w-full mb-4">Confirmar Presença</button>
+                    <button class="text-gray-400 text-[10px] uppercase tracking-widest font-semibold" onclick="move(0)">Voltar ao Início</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="pagination">
+            <div id="dot0" class="dot active"></div>
+            <div id="dot1" class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        function move(index) {
+            document.getElementById('wrapper').style.transform = `translateX(-${index * 50}%)`;
+            document.getElementById('dot0').classList.toggle('active', index === 0);
+            document.getElementById('dot1').classList.toggle('active', index === 1);
+        }
+
+        // Swipe básico para telemóveis
+        let startX = 0;
+        const canvas = document.querySelector('.mobile-canvas');
+        canvas.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        canvas.addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) move(1);
+            if (endX - startX > 50) move(0);
+        });
+    </script>
+</body>
+</html>
